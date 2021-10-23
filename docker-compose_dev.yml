@@ -6,7 +6,8 @@ services:
       dockerfile: Dockerfile
     restart: on-failure
     ports:
-      - "8000:80"   # apache
+      - "8000:80"   # http
+      - "8443:443"  # https
       - "3000:3000" # browsersync
       - "3001:3001" # browsersync ui
       - "5858:5858" # npm debug

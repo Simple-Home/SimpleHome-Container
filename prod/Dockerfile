@@ -13,7 +13,7 @@ COPY ./cron.conf /etc/cron.d/laravel.conf
 
 RUN git clone https://github.com/Simple-Home/Simple-Home.git /app
 WORKDIR /app
-RUN git checkout fix/installer
+RUN git checkout Layout-Fixes-2
 RUN composer install
 RUN npm install
 
@@ -25,7 +25,6 @@ RUN chmod 775 /app/bootstrap/cache
 RUN npm run production
 
 
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/docker/etc/httpd/ssl/server.key -out /opt/docker/etc/httpd/ssl/server.crt
 
 RUN echo 'application ALL=(ALL) NOPASSWD:/usr/local/bin/service apache2 status, /usr/local/bin/service mysql status' >> /etc/sudoers
 WORKDIR /app
