@@ -11,11 +11,15 @@ RUN npm install -g npm@latest
 COPY ./supervisor.conf /opt/docker/etc/supervisor.d/simple-home.conf
 COPY ./cron.conf /etc/cron.d/laravel.conf
 
+USER application
 RUN git clone https://github.com/Simple-Home/Simple-Home.git /app
 WORKDIR /app
 RUN git checkout Layout-Fixes-2
+
 RUN composer install
 RUN npm install
+
+USER root
 
 RUN chown application:application /app -R
 RUN chmod 775 /app
