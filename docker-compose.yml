@@ -10,8 +10,7 @@ services:
       - "8443:443"   # https
     links:
       - db
-    volumes:
-      - ../simple-home:/app
+
   db:
     image: mysql
     restart: on-failure
