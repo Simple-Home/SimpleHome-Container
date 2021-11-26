@@ -17,3 +17,5 @@ docker-compose exec -u application app /bin/bash
 
 ## Dev
 [Readme DEV](dev/README.md)
+
+test push
