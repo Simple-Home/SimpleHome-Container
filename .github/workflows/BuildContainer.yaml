@@ -12,6 +12,9 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  defaults:
+    run:
+      working-directory: ./dev
   build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
@@ -38,7 +41,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          file: ./dev/Dockerfile
+          context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
