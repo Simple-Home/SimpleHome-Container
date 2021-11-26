@@ -13,8 +13,6 @@ env:
 
 jobs:
   build-and-push-image:
-    run:
-      working-directory: ./dev
     runs-on: ubuntu-latest
     permissions:
       contents: read
