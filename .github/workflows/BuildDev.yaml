@@ -16,7 +16,7 @@ defaults:
     working-directory: ./dev
 
 jobs:
-  build-and-push-image:
+  build-and-push-dev-image:
     runs-on: ubuntu-20.04
     permissions:
       contents: read

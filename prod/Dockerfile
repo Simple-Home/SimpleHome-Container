@@ -9,13 +9,13 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash
 RUN apt-get update && apt-get install -y nodejs
 RUN npm install -g npm@latest
 
-COPY ./supervisor.conf /opt/docker/etc/supervisor.d/simple-home.conf
-COPY ./cron.conf /etc/cron.d/laravel.conf
+COPY ./prod/supervisor.conf /opt/docker/etc/supervisor.d/simple-home.conf
+COPY ./prod/cron.conf /etc/cron.d/laravel.conf
 
 USER application
 RUN git clone https://github.com/Simple-Home/Simple-Home.git /app
 WORKDIR /app
-RUN git checkout Layout-Fixes-2
+RUN git checkout master
 
 RUN composer install
 RUN npm install

@@ -15,7 +15,7 @@ RUN npm install cypress@8.7.0 -g
 
 
 ADD ./dev/supervisor.conf /opt/docker/etc/supervisor.d/simple-home.conf
-#ADD ./cron.conf /etc/cron.d/laravel.conf
+ADD ./dev/cron.conf /etc/cron.d/laravel.conf
 
 WORKDIR /app
 
