@@ -14,31 +14,10 @@ RUN apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-
 RUN npm install cypress@8.7.0 -g
 
 
-RUN echo "* * * * * application cd /app && php artisan schedule:run >> /dev/null 2>&1" >> /etc/cron.d/laravel.conf
-
-RUN echo "[program:laravel-worker] \
-          command=php /app/artisan queue:work --sleep=3 --tries=3 --max-time=3600 \
-          autostart=true \
-          autorestart=true \
-          stopasgroup=true \
-          killasgroup=true \
-          user=application \
-          numprocs=1 \
-          redirect_stderr=true \
-          stdout_logfile=/app/storage/logs/laravel-worker.log \
-          stopwaitsecs=3600 \
-          \
-          [program:cron] \
-          command=/usr/sbin/cron -f -l 8 \
-          autostart=true \
-          stdout_logfile=/var/log/cron.out.log \
-          stderr_logfile=/var/log/cron.err.log \
-" >> /opt/docker/etc/supervisor.d/simple-home.conf >
-
+ADD ./supervisor.conf /opt/docker/etc/supervisor.d/simple-home.conf
+ADD ./cron.conf /etc/cron.d/laravel.conf
 
 WORKDIR /app
-
-
 
 
 RUN echo 'application ALL=(ALL) NOPASSWD:/usr/local/bin/service apache2 status, /usr/local/bin/service mysql status' >> /etc/sudoers
