@@ -12,10 +12,9 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  defaults:
+  build-and-push-image:
     run:
       working-directory: ./dev
-  build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
       contents: read
