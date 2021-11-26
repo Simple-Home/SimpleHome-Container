@@ -1,4 +1,5 @@
 FROM webdevops/php-apache:7.4
+ENV WEB_DOCUMENT_ROOT=/app/public
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y sudo systemd w3m mariadb-client cron
 RUN systemctl enable apache2
