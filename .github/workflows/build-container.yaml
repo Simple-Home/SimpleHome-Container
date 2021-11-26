@@ -11,12 +11,8 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
-defaults:
-  run:
-    working-directory: ./prod
-
 jobs:
-  build-and-push-prod-image:
+  build-and-push-dev-image:
     runs-on: ubuntu-20.04
     permissions:
       contents: read
@@ -42,7 +38,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./
-          file: ./prod/Dockerfile
+          context: .
           push: true
-          tags: simplehome-container:master
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

@@ -1,6 +1,6 @@
 # SimpleHome-Container
 
-Docker Container containing SimpleHome Server WIP
+Development Docker Container containing for testing and deploying
 
 ## Build and run container
 
@@ -15,5 +15,18 @@ docker-compose up -d
 docker-compose exec -u application app /bin/bash
 ```
 
-## Dev
-[Readme DEV](dev/README.md)
+# Docker Dev
+
+## Build and run container
+
+```shell
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up
+```
+
+# Run cypress test
+
+```shell
+docker-compose exec -u application app /bin/bash
+npx cypress run
+```
