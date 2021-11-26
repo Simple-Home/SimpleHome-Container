@@ -45,4 +45,5 @@ jobs:
           context: ./
           file: ./dev/Dockerfile
           push: true
-          tags: simplehome-container:dev
+          tags: dev
+          labels: ${{ steps.meta.outputs.labels }}
