@@ -14,7 +14,7 @@ RUN apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-
 RUN npm install cypress@8.7.0 -g
 
 
-RUN echo "* * * * * application cd /app && php artisan schedule:run >> /dev/null 2>&1" > /etc/cron.d/laravel.conf
+RUN echo "* * * * * application cd /app && php artisan schedule:run >> /dev/null 2>&1" >> /etc/cron.d/laravel.conf
 
 RUN echo "[program:laravel-worker] \
           command=php /app/artisan queue:work --sleep=3 --tries=3 --max-time=3600 \
@@ -33,7 +33,7 @@ RUN echo "[program:laravel-worker] \
           autostart=true \
           stdout_logfile=/var/log/cron.out.log \
           stderr_logfile=/var/log/cron.err.log \
-" > /opt/docker/etc/supervisor.d/simple-home.conf >
+" >> /opt/docker/etc/supervisor.d/simple-home.conf >
 
 
 WORKDIR /app
