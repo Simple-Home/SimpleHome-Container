@@ -14,8 +14,8 @@ RUN apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-
 RUN npm install cypress@8.7.0 -g
 
 
-ADD ./docker/supervisor.conf /opt/docker/etc/supervisor.d/simple-home.conf
-ADD ./docker/cron.conf /etc/cron.d/laravel.conf
+ADD ./dev/supervisor.conf /opt/docker/etc/supervisor.d/simple-home.conf
+ADD ./dev/cron.conf /etc/cron.d/laravel.conf
 
 WORKDIR /app
 
